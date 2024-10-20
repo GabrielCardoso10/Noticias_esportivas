@@ -28,7 +28,7 @@ Este repositório contém scripts em Python de scraping desenvolvidos para colet
 
 ```bash
 git clone https://github.com/gabrielcardoso10/noticias_esportivas.git
-cd noticias_esportivas
+cd noticias_esportivas/web_scraping/scraping
 ```
 
 ### 2. Crie um ambiente virtual
