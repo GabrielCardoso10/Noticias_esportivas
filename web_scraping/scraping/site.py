@@ -57,7 +57,7 @@ class NoticiasSite:
     def _obter_noticias(self, url, cabecalho, remover_count):
         try:
             pagina = requests.get(url, headers=cabecalho)
-            pagina.raise_for_status()  # Levanta um erro se a resposta for um erro HTTP
+            pagina.raise_for_status() 
 
             sopa = BeautifulSoup(pagina.text, 'html.parser')
             noticias_encontradas = sopa.find_all('a', href=True)
@@ -65,16 +65,13 @@ class NoticiasSite:
             dicionario_noticias = {}
             for noticia in noticias_encontradas:
                 titulo = noticia.get_text(strip=True)
-                link = urljoin(url, noticia['href'])  # Converte links relativos em absolutos
+                link = urljoin(url, noticia['href']) 
 
-                # Remover horários do título
                 titulo = self._remover_horarios(titulo)
 
-                # Verifica se o título e o link são relevantes
                 if titulo and link and self._is_noticia_relevante(titulo):
                     dicionario_noticias[titulo] = link
 
-            # Remove as últimas notícias conforme o site
             self._remover_ultimas_noticias(dicionario_noticias, remover_count)
 
             self.noticias = dicionario_noticias
@@ -83,18 +80,15 @@ class NoticiasSite:
             print(f"Erro ao acessar o site: {e}")
 
     def _remover_horarios(self, titulo):
-        # Remove padrões de horários do título
         return re.sub(r'\b\d{1,2}:\d{2} ?[APap][mM]?\b|\b\d{1,2} ?[APap][mM]?\b|\b\d{1,2}(?:h|hs)\d{2}\b', '', titulo).strip()
 
     def _remover_ultimas_noticias(self, dicionario_noticias, remover_count):
-        # Remove as últimas notícias
         for _ in range(remover_count):
-            if dicionario_noticias:  # Verifica se ainda há notícias
-                dicionario_noticias.popitem()  # Remove a última notícia
+            if dicionario_noticias:  
+                dicionario_noticias.popitem()
 
     def _is_noticia_relevante(self, titulo):
-        # Lista de palavras ou frases a serem excluídas
-        palavras_excluir = ['ao vivo', 'resultados', 'agenda', 'calendário', 'promoção']  # Exemplo de palavras a excluir
+        palavras_excluir = ['ao vivo', 'resultados', 'agenda', 'calendário', 'promoção'] 
         return not any(palavra in titulo.lower() for palavra in palavras_excluir)
 
     def exibir_noticias(self):
@@ -124,7 +118,6 @@ class NoticiasSite:
                 except ValueError:
                     print("Entrada inválida.")
 
-# Menu para o usuário
 def menu():
     site = NoticiasSite()
 
