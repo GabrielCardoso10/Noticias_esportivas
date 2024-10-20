@@ -6,7 +6,7 @@
 
 ## 📜 **Descrição**
 
-Este repositório contém scripts em Python desenvolvidos para coletar e exibir as principais manchetes de sites esportivos populares como **Lance, GE (Globo Esporte), Gazeta Esportiva, e Jovem Pan**. O objetivo é facilitar a consulta de notícias esportivas diretamente no terminal e permitir a abertura das notícias no navegador.
+Este repositório contém scripts em Python de scraping desenvolvidos para coletar e exibir as principais manchetes de sites esportivos populares como **Lance, GE (Globo Esporte), Gazeta Esportiva, e Jovem Pan**. O objetivo é facilitar a consulta de notícias esportivas diretamente no terminal e permitir a abertura das notícias no navegador.
 
 ---
 
